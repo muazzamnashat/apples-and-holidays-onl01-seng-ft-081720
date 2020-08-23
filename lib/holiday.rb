@@ -56,7 +56,7 @@ def all_winter_holiday_supplies(holiday_hash)
 end
 
 def all_supplies_in_holidays(holiday_hash)
-  binding.pry
+  
   holiday_hash.each do |season, holiday|
     puts "#{season.capitalize}:"
     holiday.each do |holiday, supplies|
@@ -67,29 +67,39 @@ def all_supplies_in_holidays(holiday_hash)
 
 end
 
-holiday_hash={
-    :winter => {
-      :christmas => ["Lights", "Wreath"],
-      :new_years => ["Party Hats"]
+# holiday_hash={
+#     :winter => {
+#       :christmas => ["Lights", "Wreath"],
+#       :new_years => ["Party Hats"]
         
-    },
-    :summer => {
-      :fourth_of_july => ["Fireworks", "BBQ"]
-    },
-    :fall => {
-      :thanksgiving => ["Turkey"]
-    },
-    :spring => {
-      :memorial_day => ["BBQ"]
-    }
-  }
+#     },
+#     :summer => {
+#       :fourth_of_july => ["Fireworks", "BBQ"]
+#     },
+#     :fall => {
+#       :thanksgiving => ["Turkey"]
+#     },
+#     :spring => {
+#       :memorial_day => ["BBQ"]
+#     }
+#   }
 
-all_supplies_in_holidays(holiday_hash)
+
 
 def all_holidays_with_bbq(holiday_hash)
   # return an array of holiday names (as symbols) where supply lists
   # include the string "BBQ"
-
+  result=[]
+  holiday_hash.each do |season, holiday|
+    holiday.each do |name, supply|
+        supply.each do |supply_name|
+           if supply_name == "BBQ"
+            result << name
+           end 
+      end
+    end
+  end
+  result
 end
 
 
